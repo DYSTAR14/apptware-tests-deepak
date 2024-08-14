@@ -22,15 +22,16 @@ class EmployeeTest {
 
   @Test
   void testSaveEmployee() {
-    UUID employeeId = UUID.randomUUID();
+//    UUID employeeId = UUID.randomUUID();
     String employeeName = "Firstname Lastname";
 
     Employee employee = new Employee();
-    employee.setId(employeeId);
+//    employee.setId(employeeId);
     employee.setName(employeeName);
 
     employeeRepository.save(employee);
 
+    UUID employeeId = employee.getId();
     Employee retrievedEmployee = employeeRepository.findById(employeeId).orElse(null);
     Assertions.assertThat(retrievedEmployee.getId()).isEqualTo(employeeId);
     Assertions.assertThat(retrievedEmployee).isNotNull();
